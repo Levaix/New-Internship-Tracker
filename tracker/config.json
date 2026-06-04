@@ -1,0 +1,59 @@
+{
+  "cities": [
+    "London",
+    "Frankfurt",
+    "Düsseldorf",
+    "Dusseldorf",
+    "Cologne",
+    "Köln",
+    "Munich",
+    "München",
+    "Hamburg",
+    "Berlin",
+    "Zurich",
+    "Zürich",
+    "Geneva",
+    "Genève",
+    "Luxembourg"
+  ],
+  "role_keywords": [
+    "intern",
+    "internship",
+    "summer analyst",
+    "summer associate",
+    "off-cycle",
+    "off cycle",
+    "spring",
+    "insight",
+    "placement",
+    "praktik",
+    "praktikant",
+    "werkstudent",
+    "working student",
+    "stage",
+    "stagiaire",
+    "visiting analyst",
+    "graduate",
+    "trainee",
+    "new analyst",
+    "full-time analyst",
+    "full time analyst",
+    "analyst programme",
+    "analyst program",
+    "campus",
+    "early career",
+    "junior"
+  ],
+  "exclude_keywords": [
+    "senior",
+    "vice president",
+    "managing director",
+    "director",
+    "experienced hire",
+    "lateral"
+  ],
+  "telegram": {
+    "bot_token": "",
+    "chat_id": ""
+  }
+}

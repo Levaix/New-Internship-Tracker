@@ -1,0 +1,439 @@
+7IM
+AAB Group
+ABN AMRO
+AIG
+AJ Bell
+ARC Ratings
+ARR Investment Partners
+AXA
+AXA Investment Managers
+Aberdeen Group
+Access Capital Partners
+Accuracy
+Aegon
+Affinius Capital
+Akereos Capital
+Alantra
+Allia C&C
+AllianceBernstein
+Allianz Insurance
+Allied World
+Alpha FMC
+AlphaSights
+Altana Wealth
+Altman Solon
+Alvarez & Marsal
+Alvine Capital
+Amazon
+American Express
+Analysys Mason
+Anesi Advisors
+Ankura
+Aon
+Apple
+Aquatic Capital Management
+Arbuthnot Latham
+Arch Insurance International
+Ardea Partners
+Ardian
+Arena Investors
+Ares Management
+Arkle Finance
+Aspect Capital
+AstraZeneca
+Atlanta Wealth
+Audit Scotland
+AustralianSuper
+Aventum Group
+Azets
+BAE Systems
+BBVA
+BCG
+BDO Global
+BGF
+BMLL
+BMO Capital Markets
+BNP Paribas
+BNY Mellon
+BP
+BTG Pactual
+BTIG
+Bain & Company
+Baird
+Baker Hughes
+Balyasny Asset Management
+Bank of America
+Bank of England
+Barclays
+Baringa
+Barings
+Barnett Waddingham
+Bastion Trading
+Berenberg
+BlackRock
+Blackfinch Group
+Blackstone
+Blackwood Capital
+Blockchain.com
+Bloomberg
+Brevan Howard
+Brio Real Estate
+British Airways
+British Business Bank
+British Land
+Burford Capital
+CBRE
+CD&R
+CFC
+CFO Insights
+CIBC
+CITIC CLSA
+CT: Accountants Advisers
+CVC
+Cabot Properties
+Cairneagle
+Caledonia Investments
+Cambridge Associates
+Campbell Lutyens
+Canada Life
+Canary Wharf Group
+Capgemini
+Capital Dynamics
+Capital Group
+Capital One
+Capstone
+Capula Investment Management
+Carter Jonas
+Castleton Commodities International
+Caxton Associates
+Cboe Global Markets
+Centerview Partners
+Centrica
+Charities Aid Foundation
+Charles River Associates
+Chatham Financial
+Chicago Trading Company
+Citadel
+Citadel Securities
+Citco
+Citi
+Clarksons
+Climate Investment
+Coinbase
+Colliers
+Columbia Threadneedle Investments
+Compass Lexecon
+Compound Equity Group
+Convex Insurance
+Copper.co
+Crédit Agricole
+Cushman & Wakefield
+Cygnum Capital
+D.E. Shaw
+DC Advisory
+DN Capital
+DRW
+DV Trading
+DWS
+Da Vinci Trading
+Dare
+DealGlobe
+Deloitte
+Deutsche Bank
+Dimensional Fund Advisors
+Dow Jones
+E.ON
+EBRD
+EDF Trading
+EQ
+EQT
+EY
+EY-Parthenon
+Eastdil Secured
+Enstar Group
+Equinor
+Equitix
+Estari Group
+Ethical Capital Partners
+Eurazeo
+Evercore
+Everest
+ExodusPoint
+FTI Consulting
+FactSet
+Fenchurch Advisory
+Fide Partners
+Fidelity International
+Fidelity Investments
+Financial Conduct Authority
+First Actuarial
+First Bank of Nigeria
+First Wealth
+Flow Traders
+Flowdesk
+Forvis Mazars
+Franklin Templeton
+Frontier Economics
+Future Planet Capital
+G-Research
+GEP
+GIC
+GLG
+GP Bullhound
+GPFS
+GSA Capital
+Galaxy
+Gartner
+General Atlantic
+General Electric
+Genesis Quant Capital
+Gleacher Shacklock
+Global Gate
+Global Infrastructure Advisors
+Gneiss Energy
+Goldman Sachs
+Google
+Government Economic Service
+Grant Thornton
+Greenhill
+Greystar
+Grosvenor
+Guggenheim Partners
+Guidehouse
+Gunvor
+HDI Global
+HSBC
+Hamilton Insurance Group
+Hamilton Lane
+Handelsbanken
+Harris Williams
+Harrison Street
+Hayfin Capital Management
+Hiscox
+Houlihan Lokey
+Howden
+Hudson River Trading
+Hymans Robertson
+ICE
+IMC Trading
+IQT
+InfraRed Capital Partners
+Insurance Advisory Partners
+Interpath Advisory
+Intriva
+Inverto
+Investec
+Isio
+Ithaca Energy
+J.P. Morgan
+JLL
+Jane Street
+Javelin Global Commodities
+Jefferies
+Johnston Carmichael
+Julius Baer
+Jump Trading
+Just
+KKR
+KPMG
+KR8 Advisory
+Klesch Group
+Kline Hill Partners
+Knight Frank
+Korn Ferry
+Kroll
+L'Oréal
+L.E.K. Consulting
+LCP
+LMR Partners
+LSS Strategic Partners
+La Caisse
+LaSalle
+Lazard
+Lazard Asset Management
+Leerink Partners
+Legal & General
+Lendable
+Lenovo
+Leo-Crown Estates
+Liberty Global
+Lincoln International
+Liquidnet
+Lloyds Banking Group
+Lockton
+Loizou & Co
+London Stock Exchange Group
+M&G
+MFS
+MKI Global Partners
+MUFG
+Macquarie Group
+Macro Hive
+Mako Trading
+Man Group
+Markel
+MarketAxess
+Marsh McLennan
+Marshall Wace
+Maven Securities
+McKinsey & Company
+Mediobanca
+Menzies
+MerQube
+Mercer
+Midland Heart
+Millennium Management
+Mizuho
+Moelis & Co
+Moody's
+Morgan Stanley
+Munich Re
+NCR Atleos
+NERA
+NFU Mutual
+NatWest Markets
+National Bank of Canada
+Nationwide
+Natixis
+Natrium Capital
+Near Future
+Network Rail
+Neuberger Berman
+Newton
+NextWave Consulting
+Nomura
+Norges Bank
+Northern Trust
+Nuveen
+OC&C
+Oak Hill Advisors
+Oliver Wyman
+Optiver
+Oracle
+Orbis
+Oxera
+P&G
+PGIM
+PIMCO
+PJT Partners
+PKF Littlejohn
+PKF Smith Cooper
+Panmure Liberum
+Peel Hunt
+Pension Insurance Corporation
+Perella Weinberg Partners
+Pharus
+Pictet Asset Management
+Piper Sandler
+Platinum Peak Holdings Ltd
+Plural Strategy
+Point72
+Principal Asset Management
+Private Equity Insights
+Proxima
+Putnam
+PwC
+Qatalyst Partners
+Quadrature
+Quantbot Technologies
+Quantuma
+Qube RT
+RBC Capital Markets
+RSM
+RWE
+Raine Group
+Raymond James
+Redburn
+Rede Partners
+Retail Insights
+Revolut
+Ripple
+Rokos Capital Management
+Roland Berger
+Rothesay
+Rothschild & Co.
+Royal London
+Ryan
+Ryan Specialty
+Rystad Energy
+S&P Global
+S&W
+STJ Advisors
+Saffery
+Saltgate
+Santander
+Savills
+Schonfeld
+Schroders
+Scotiabank
+Severn Trent
+Shell
+SilverTide
+Simon-Kucher
+Sixth Street
+Skagen Capital
+Sky
+Société Générale
+Sona Asset Management
+Soros Fund Management
+Squarepoint Capital
+Standard Chartered
+State Street
+StepStone Group
+Stifel
+StoneX
+Stout
+Superbet
+Susquehanna International Group
+Swiss Re
+Synthesis
+T.Capital
+TD Securities
+TP ICAP
+Temasek
+TempoCap
+Tencent
+Teneo
+Tesco
+Teza Technologies
+The Carlyle Group
+The Dot Group
+The Wall Street Journal
+Tide Insurance
+TikTok
+Tikehau Capital
+Tokio Marine Kiln
+Tower Peak Partners
+Tower Research Capital
+Trackr
+Tradeweb
+Triton
+Turner & Townsend
+UBS
+Uber
+Valor Real Estate Partners
+Valsoft Corporation
+Vanguard
+Verition Fund Management
+Virtu Financial
+Visa
+W. P. Carey
+WTW
+Wahed
+Walter Scott
+Waters Corporation
+WeChat Pay
+Weatherbys Private Bank
+Wells Fargo
+Welltower
+Westgrove
+William Blair
+Wincent
+Wintermute
+Wood Mackenzie
+XTX Markets
+Xantium
+ZS
+Zeus Capital
+Zurich Insurance
+redalpine

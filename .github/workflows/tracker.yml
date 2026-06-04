@@ -1,0 +1,38 @@
+name: internship-tracker
+
+# Runs every 30 minutes, 24/7. Free on GitHub Actions for public repos.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write          # needed to commit the updated seen-state back
+
+concurrency:
+  group: tracker
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run tracker
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python3 tracker/run.py
+
+      - name: Persist seen-state
+        run: |
+          git config user.name "tracker-bot"
+          git config user.email "tracker-bot@users.noreplace.github.com"
+          git add tracker/state/seen.json
+          git commit -m "update seen-state [skip ci]" || echo "no changes"
+          git push || echo "nothing to push"
