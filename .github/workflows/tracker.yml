@@ -33,6 +33,6 @@ jobs:
         run: |
           git config user.name "tracker-bot"
           git config user.email "tracker-bot@users.noreplace.github.com"
-          git add tracker/state/seen.json
+          git add tracker/state/
           git commit -m "update seen-state [skip ci]" || echo "no changes"
           git push || echo "nothing to push"

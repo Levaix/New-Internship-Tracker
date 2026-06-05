@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Internship tracker — fetch all mapped firms, filter to target cities +
-internship/graduate roles, dedup against seen-store, send Telegram alerts."""
+internship/graduate roles, dedup against seen-store, send Telegram alerts.
+
+New-firm auto-seed: the first time a firm appears (returns data), its current
+matching postings are recorded silently (no alert). Only postings that appear
+*after* a firm is known trigger alerts — so you can add firms anytime without
+a backfill flood."""
 import os, sys, csv, json, time, re, urllib.request, urllib.parse
 import concurrent.futures as cf
 import connectors
@@ -19,6 +24,7 @@ ROLE_RE = re.compile("|".join(ROLE_PATTERNS), re.I)
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "config.json"), encoding="utf-8"))
 SEEN_PATH = os.path.join(HERE, "state", "seen.json")
+KNOWN_PATH = os.path.join(HERE, "state", "known_companies.json")
 
 def load_registry():
     rows = []
@@ -28,15 +34,13 @@ def load_registry():
                 rows.append(r)
     return rows
 
-def load_seen():
-    try:
-        return set(json.load(open(SEEN_PATH, encoding="utf-8")))
-    except Exception:
-        return set()
+def _load(path):
+    try: return set(json.load(open(path, encoding="utf-8")))
+    except Exception: return set()
 
-def save_seen(seen):
-    os.makedirs(os.path.dirname(SEEN_PATH), exist_ok=True)
-    json.dump(sorted(seen), open(SEEN_PATH, "w", encoding="utf-8"))
+def _save(path, s):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    json.dump(sorted(s), open(path, "w", encoding="utf-8"))
 
 def matches(posting):
     title = (posting["title"] or "").lower()
@@ -66,21 +70,38 @@ def main():
     dry = "--dry-run" in sys.argv
     seed = "--seed" in sys.argv
     reg = load_registry()
-    seen = load_seen()
+    seen = _load(SEEN_PATH)
+    known = _load(KNOWN_PATH)
+
     def fetch_one(r): return connectors.fetch(r["company"], r["platform"], r["token"])
     all_posts = []
     with cf.ThreadPoolExecutor(max_workers=40) as ex:
         for posts in ex.map(fetch_one, reg):
             all_posts.extend(posts)
+
+    fetched_companies = {p["company"] for p in all_posts}     # firms that returned data
+    new_firms = fetched_companies - known                     # first time we see them
     hits = [p for p in all_posts if matches(p)]
-    new = [p for p in hits if p["uid"] not in seen]
-    print(f"firms={len(reg)} fetched={len(all_posts)} city+role matches={len(hits)} new={len(new)}")
+
     if seed:
         for p in hits: seen.add(p["uid"])
-        save_seen(seen)
-        print(f"seeded {len(seen)} postings as already-seen (no alerts sent)")
+        _save(SEEN_PATH, seen); _save(KNOWN_PATH, known | fetched_companies)
+        print(f"seeded {len(seen)} postings; known firms {len(known | fetched_companies)}")
         return
-    for p in sorted(new, key=lambda x: x["company"]):
+
+    to_alert, silently_seeded = [], 0
+    for p in hits:
+        if p["uid"] in seen:
+            continue
+        if p["company"] in new_firms:        # brand-new firm -> learn silently
+            seen.add(p["uid"]); silently_seeded += 1
+        else:                                # known firm -> genuine new posting
+            to_alert.append(p)
+
+    print(f"firms={len(reg)} fetched={len(all_posts)} matches={len(hits)} "
+          f"new_firms={len(new_firms)} silently_seeded={silently_seeded} to_alert={len(to_alert)}")
+
+    for p in sorted(to_alert, key=lambda x: x["company"]):
         msg = (f"\U0001F4BC <b>{p['company']}</b> posted <b>{p['title']}</b>\n"
                f"\U0001F4CD {p['location'] or 'see listing'}\n\U0001F517 {p['url']}")
         if dry:
@@ -88,7 +109,10 @@ def main():
         else:
             if telegram(msg): seen.add(p["uid"])
             time.sleep(0.4)
-    if not dry: save_seen(seen)
+
+    if not dry:
+        _save(SEEN_PATH, seen)
+        _save(KNOWN_PATH, known | fetched_companies)
     print("done.")
 
 if __name__ == "__main__":

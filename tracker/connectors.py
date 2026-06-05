@@ -207,9 +207,86 @@ def avature(company, spec):
         _t.sleep(0.1)
     return out
 
+def eightfold(company, spec):
+    """Eightfold ATS. spec = 'tenant|domain' e.g. hsbc|hsbc.com . Public JSON API,
+    keyword-searchable; location filtering is unreliable so we filter cities downstream."""
+    import time as _t, urllib.parse as _up
+    tenant, domain = spec.split("|")
+    base = f"https://{tenant}.eightfold.ai/api/apply/v2/jobs"
+    terms = ["intern", "graduate", "apprentice", "placement", "summer analyst",
+             "working student", "praktikum", "off-cycle"]
+    seen, out = set(), []
+    for term in terms:
+        start = 0
+        while start < 250:                       # cap
+            url = f"{base}?domain={domain}&start={start}&num=50&query={_up.quote(term)}"
+            j = None
+            for _ in range(3):
+                j = _req(url)
+                if isinstance(j, dict): break
+                _t.sleep(0.6)
+            if not isinstance(j, dict): break
+            pos = j.get("positions", []) or []
+            if not pos: break
+            for p in pos:
+                pid = p.get("id")
+                uid = f"ef:{tenant}:{pid}"
+                if uid in seen: continue
+                seen.add(uid)
+                out.append(dict(company=company, title=p.get("name", ""),
+                                location=p.get("location", "") or "",
+                                url=f"https://{tenant}.eightfold.ai/careers?pid={pid}&domain={domain}",
+                                uid=uid, platform="eightfold"))
+            start += 50
+            if start >= j.get("count", 0): break
+    return out
+
+def workable(company, token):
+    """Workable. token = account shortcode (e.g. insight-investment). Public widget API."""
+    j = _req(f"https://apply.workable.com/api/v1/widget/accounts/{token}?details=true")
+    out = []
+    if isinstance(j, dict):
+        for x in j.get("jobs", []):
+            loc = x.get("location") or x.get("city") or ""
+            if isinstance(loc, dict):
+                loc = ", ".join(y for y in [loc.get("city"), loc.get("country")] if y)
+            sc = x.get("shortcode") or x.get("id")
+            out.append(dict(company=company, title=x.get("title", ""), location=loc,
+                            url=x.get("url") or f"https://apply.workable.com/j/{sc}",
+                            uid=f"wk:{token}:{sc}", platform="workable"))
+    return out
+
+def breezy(company, token):
+    """Breezy HR. token = subdomain (e.g. marex). Public JSON board."""
+    j = _req(f"https://{token}.breezy.hr/json")
+    out = []
+    if isinstance(j, list):
+        for x in j:
+            loc = x.get("location")
+            loc = loc.get("name") if isinstance(loc, dict) else (loc or "")
+            out.append(dict(company=company, title=x.get("name", ""), location=loc,
+                            url=x.get("url", ""),
+                            uid=f"bz:{token}:{x.get('id') or x.get('friendly_id')}",
+                            platform="breezy"))
+    return out
+
+def pinpoint(company, token):
+    """Pinpoint ATS. token = subdomain (e.g. cinven). Public postings.json."""
+    j = _req(f"https://{token}.pinpointhq.com/postings.json")
+    out = []
+    if isinstance(j, dict):
+        for x in j.get("data", []):
+            loc = x.get("location")
+            loc = loc.get("name") if isinstance(loc, dict) else (loc or "")
+            out.append(dict(company=company, title=x.get("title", ""), location=loc,
+                            url=x.get("url", ""),
+                            uid=f"pp:{token}:{x.get('id')}", platform="pinpoint"))
+    return out
+
 DISPATCH = {"greenhouse": greenhouse, "lever": lever, "ashby": ashby,
             "smartrecruiters": smartrecruiters, "workday": workday,
-            "oracle": oracle, "avature": avature}
+            "oracle": oracle, "avature": avature, "eightfold": eightfold,
+            "workable": workable, "breezy": breezy, "pinpoint": pinpoint}
 
 def fetch(company, platform, token):
     fn = DISPATCH.get(platform)

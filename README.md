@@ -52,17 +52,16 @@ Alternatively run on a €3.49/mo VPS via cron: `*/30 * * * * cd /path/tracker &
 
 ## Coverage status
 
-- **132 firms live.** Platforms: Greenhouse, Lever, Ashby, SmartRecruiters, **Workday (41)**,
-  and **Oracle Recruiting Cloud (J.P. Morgan, Jefferies, BNY Mellon)**.
-- Bulge-bracket / big names covered: J.P. Morgan, Citi, Morgan Stanley, Deutsche Bank,
-  Wells Fargo, RBC, Standard Chartered, Jefferies, Macquarie, Lloyds, Santander, ING, NatWest,
-  Mizuho; Blackstone, Apollo, Ares, Ardian, ICG, Partners Group, Brookfield, Warburg Pincus;
-  BlackRock, Fidelity Intl, Invesco, abrdn, State Street, Vanguard, T. Rowe Price, PGIM, M&G,
-  Aviva, Franklin Templeton, Neuberger Berman, AllianceBernstein, DWS, Northern Trust, Trafigura.
-- An **Avature** scraper connector exists (generic; enumerates listing + reads detail-page
-  location). It is brittle and low-yield: Avature portals expose no machine-readable location
-  and several PE firms (Carlyle, KKR) recruit campus roles via invite-only systems, so their
-  public portals show few/no internships.
-- **True holdouts — need a rendering browser (JS-only / invite-only portals):** Goldman Sachs
-  (higher.gs.com), UBS, HSBC, Bank of America, Barclays, BNP Paribas, Societe Generale, Nomura,
-  Lazard, KKR, Carlyle, CVC. These require Claude-in-Chrome style browser automation per firm.
+- **202 firms live.** Connectors: Greenhouse, Lever, Ashby, SmartRecruiters, Workday,
+  Oracle Recruiting Cloud, **Eightfold**, plus a generic Avature scraper.
+- Big-name banks covered: J.P. Morgan, Citi, Morgan Stanley, Deutsche Bank, Barclays, HSBC,
+  Wells Fargo, RBC, Standard Chartered, Jefferies, MUFG, Macquarie, Lloyds, Santander, ING,
+  NatWest, Mizuho, LSEG. Full PE/HF/asset-management tier (Blackstone, Apollo, Ares, KKR-tier
+  via Ardian/ICG/Partners Group/Brookfield/Warburg Pincus; BlackRock, Fidelity, Invesco, abrdn,
+  Vanguard, T. Rowe Price, PGIM, Nuveen, M&G, etc.). Trading: Jane Street, Optiver, IMC, DRW,
+  Virtu, Old Mission, Chicago Trading, Jump, Tower Research, etc.
+- **Not trackable (closed/JS-protected portals):** Goldman Sachs (JS bot-protection), Bank of
+  America (tal.net), UBS, BNP Paribas, Societe Generale, Nomura, Lazard (Taleo/Avature/SF),
+  KKR/Carlyle/CVC (Avature/invite-only). These would each need bespoke headless-browser scraping.
+- New-firm auto-seed: adding a firm to registry.csv never floods you — its current openings are
+  learned silently on the first run; only later postings alert.
