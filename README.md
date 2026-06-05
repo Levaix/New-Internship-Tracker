@@ -52,7 +52,7 @@ Alternatively run on a €3.49/mo VPS via cron: `*/30 * * * * cd /path/tracker &
 
 ## Coverage status
 
-- **205 firms live** across 11 connectors: Greenhouse, Lever, Ashby, SmartRecruiters, Workday,
+- **208 firms live** across 11 connectors: Greenhouse, Lever, Ashby, SmartRecruiters, Workday,
   Oracle Recruiting Cloud, Eightfold, Workable, Breezy, Pinpoint, and **tal.net (Lumesse) Atom feed**.
 - Covers the bulge bracket with an open feed (JPM, Citi, Morgan Stanley, Deutsche Bank, Barclays,
   HSBC, Jefferies, plus **Lazard, BNP Paribas, Bank of America** via tal.net once their cycles open),
