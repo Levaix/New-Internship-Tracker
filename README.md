@@ -52,16 +52,14 @@ Alternatively run on a €3.49/mo VPS via cron: `*/30 * * * * cd /path/tracker &
 
 ## Coverage status
 
-- **202 firms live.** Connectors: Greenhouse, Lever, Ashby, SmartRecruiters, Workday,
-  Oracle Recruiting Cloud, **Eightfold**, plus a generic Avature scraper.
-- Big-name banks covered: J.P. Morgan, Citi, Morgan Stanley, Deutsche Bank, Barclays, HSBC,
-  Wells Fargo, RBC, Standard Chartered, Jefferies, MUFG, Macquarie, Lloyds, Santander, ING,
-  NatWest, Mizuho, LSEG. Full PE/HF/asset-management tier (Blackstone, Apollo, Ares, KKR-tier
-  via Ardian/ICG/Partners Group/Brookfield/Warburg Pincus; BlackRock, Fidelity, Invesco, abrdn,
-  Vanguard, T. Rowe Price, PGIM, Nuveen, M&G, etc.). Trading: Jane Street, Optiver, IMC, DRW,
-  Virtu, Old Mission, Chicago Trading, Jump, Tower Research, etc.
-- **Not trackable (closed/JS-protected portals):** Goldman Sachs (JS bot-protection), Bank of
-  America (tal.net), UBS, BNP Paribas, Societe Generale, Nomura, Lazard (Taleo/Avature/SF),
-  KKR/Carlyle/CVC (Avature/invite-only). These would each need bespoke headless-browser scraping.
-- New-firm auto-seed: adding a firm to registry.csv never floods you — its current openings are
-  learned silently on the first run; only later postings alert.
+- **205 firms live** across 11 connectors: Greenhouse, Lever, Ashby, SmartRecruiters, Workday,
+  Oracle Recruiting Cloud, Eightfold, Workable, Breezy, Pinpoint, and **tal.net (Lumesse) Atom feed**.
+- Covers the bulge bracket with an open feed (JPM, Citi, Morgan Stanley, Deutsche Bank, Barclays,
+  HSBC, Jefferies, plus **Lazard, BNP Paribas, Bank of America** via tal.net once their cycles open),
+  the full PE/HF/asset-management tier, all major trading shops, consulting, insurance, accounting,
+  and a fintech/payments cluster.
+- **tal.net firms (Lazard/BNP/BofA)** are wired via the campus Atom feed; those feeds are empty
+  between recruiting cycles (e.g. summer) and populate when 2027 programs open — auto-seed handles it.
+- **Still out of reach:** Goldman Sachs (active anti-bot — not circumvented by design); Nomura
+  (SuccessFactors) and UBS (custom Avature) would each need a dedicated reverse-engineering pass.
+- New-firm auto-seed: adding a firm to registry.csv never floods you.

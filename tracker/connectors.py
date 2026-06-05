@@ -283,10 +283,43 @@ def pinpoint(company, token):
                             uid=f"pp:{token}:{x.get('id')}", platform="pinpoint"))
     return out
 
+def talnet(company, spec):
+    """Lumesse TalentLink (tal.net) Atom feed. spec = feed base up to '/vacancy',
+    e.g. 'lazard-careers.tal.net/vx/mobile-0/appcentre-1/brand-4/candidate/jobboard/vacancy'.
+    Iterates job-boards 1..8 and parses Atom entries (title/link/summary)."""
+    import re as _re, html as _html, urllib.request as _ur
+    out, seen = [], set()
+    for b in range(1, 9):
+        url = f"https://{spec}/{b}/feed"
+        try:
+            req = _ur.Request(url, headers={"User-Agent": UA})
+            with _ur.urlopen(req, timeout=TIMEOUT) as r:
+                x = r.read().decode("utf-8", "replace")
+        except Exception:
+            continue
+        for e in _re.findall(r"<entry>(.*?)</entry>", x, _re.S):
+            t = _re.search(r"<title[^>]*>(.*?)</title>", e, _re.S)
+            link = _re.search(r'<link[^>]*href="([^"]+)"', e)
+            summ = _re.search(r"<(?:summary|content)[^>]*>(.*?)</(?:summary|content)>", e, _re.S)
+            title = _html.unescape(_re.sub(r"<[^>]+>", "", t.group(1))).strip() if t else ""
+            loc = ""
+            if summ:
+                loc = _html.unescape(_re.sub(r"<[^>]+>", " ", summ.group(1)))
+                loc = _re.sub(r"\s+", " ", loc).strip()[:160]
+            u = link.group(1) if link else url
+            uid = f"tn:{spec.split('.tal.net')[0]}:{u}"
+            if uid in seen:
+                continue
+            seen.add(uid)
+            out.append(dict(company=company, title=title, location=loc,
+                            url=u, uid=uid, platform="talnet"))
+    return out
+
 DISPATCH = {"greenhouse": greenhouse, "lever": lever, "ashby": ashby,
             "smartrecruiters": smartrecruiters, "workday": workday,
             "oracle": oracle, "avature": avature, "eightfold": eightfold,
-            "workable": workable, "breezy": breezy, "pinpoint": pinpoint}
+            "workable": workable, "breezy": breezy, "pinpoint": pinpoint,
+            "talnet": talnet}
 
 def fetch(company, platform, token):
     fn = DISPATCH.get(platform)
